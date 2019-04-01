@@ -1,0 +1,39 @@
+server:
+  port: 7901
+spring:
+  jpa:
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+  datasource:
+    platform: h2
+    schema: classpath:schema.sql
+    data: classpath:data.sql
+  application:
+    name: microservice-provider-user
+logging:
+  level:
+    root : info
+    org.hibernate : info
+    org.hibernate.type.descriptor.sql.BasicBinder: trace
+    org.hibernate.type.descriptor.sql.BasicExtractor : trace
+    com.haol : debug
+eureka:
+  client:
+    service-url:
+      #defaultZone: http://user:haoliang11@localhost:8761/
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+#--------------关于actuator暴露端点的配置（version: Spring-Boot-2.0）-----------------
+#在spring boot的旧版本中，监控端点（如/env）是默认开启的，所以只要项目正常启动，就能通过url获取信息。
+#可是在2.0版本以后，由于安全性考虑，除了/health和/info的端点，默认都是不暴露的。
+# 设置暴露所有端点
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: [health,info]
+
