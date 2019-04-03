@@ -28,4 +28,14 @@ public class User {
     private Short age;
     @Column
     private BigDecimal balance;
+
+    public User(){
+
+    }
+
+    public User(Long id,String name){
+        this.id = id;
+        this.name = name;
+    }
+
 }

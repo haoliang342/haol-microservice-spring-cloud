@@ -23,9 +23,16 @@ eureka:
   client:
     service-url:
       #defaultZone: http://user:haoliang11@localhost:8761/
-      defaultZone: http://localhost:8761/eureka/
+      # http://${eureka.instance.hostname}:${server.port}/eureka/
+      #defaultZone:  http://peer1:8762/eureka/        #http://localhost:8761/eureka/
+      defaultZone:  http://localhost:8761/eureka/
   instance:
     prefer-ip-address: true
+    ## 配置： 应用的名称：应用的端口
+    instance-id: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${server.port}}}
+    ## 通过这个元数据，当在本地部署多服务实例后，就会有随机值来确保实例是唯一的。在CloudFoundry中
+    #instance-id: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+
 #--------------关于actuator暴露端点的配置（version: Spring-Boot-2.0）-----------------
 #在spring boot的旧版本中，监控端点（如/env）是默认开启的，所以只要项目正常启动，就能通过url获取信息。
 #可是在2.0版本以后，由于安全性考虑，除了/health和/info的端点，默认都是不暴露的。

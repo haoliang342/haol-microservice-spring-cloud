@@ -8,6 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Title: title
@@ -62,6 +66,27 @@ public class UserController {
     @PostMapping("/postuser")
     public User postUser(@RequestBody User user){
         return user;
+    }
+
+
+    @PostMapping("/getList")
+    public List<User> getListUser(){
+        User user1 = new User(1L,"haol1");
+        User user2 = new User(2L,"haol2");
+        User user3 = new User(3L,"haol3");
+        List<User> list = new ArrayList<>();
+        list.add(user1);
+        list.add(user2);
+        list.add(user3);
+        return list;
+    }
+
+    @PostMapping("/getUser")
+    public Map<String,Object> getUser(){
+        User user = new User(1L,"haol");
+        Map<String,Object> map = new HashMap<>();
+        map.put("user",user);
+        return map;
     }
 
 

@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * Title: title
  * Description: [描述]
@@ -26,5 +29,11 @@ public interface UserFeignClient {
 
     @PostMapping("/postuser")
     User postUser(@RequestBody User user);
+
+    @PostMapping("/getList")
+    List<User> getListUser();
+
+    @PostMapping("/getUser")
+    Map<String,Object> getUser();
 
 }
