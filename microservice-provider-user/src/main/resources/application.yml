@@ -1,6 +1,6 @@
-server:
-  port: 7901
 spring:
+  profiles:
+    active: dev
   jpa:
     generate-ddl: false
     show-sql: true

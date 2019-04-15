@@ -13,6 +13,12 @@
 		<module>microservice-consumer-movie-ribbon-properties-customizing</module>
 		<module>microservice-consumer-movie-feign</module>
 		<module>microservice-discovery-eureka-ha</module>
+		<module>microservice-consumer-movie-ribbon-with-hystrix</module>
+		<module>microservice-consumer-movie-ribbon-with-hystrix-propagation</module>
+		<module>microservice-consumer-movie-feign-with-hystrix</module>
+		<module>microservice-dashboard</module>
+		<module>microservice-turbine</module> 
+		<module>microservice-gateway-zuul</module>
     </modules>
 
 	<parent>

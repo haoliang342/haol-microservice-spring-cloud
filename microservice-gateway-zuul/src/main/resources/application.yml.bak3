@@ -1,0 +1,33 @@
+
+server:
+  port: 8040
+
+eureka:
+  client:
+    ## 把eureka 注册到哪个url上
+    service-url:
+      #defaultZone: http://user:haoliang11@localhost:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+spring:
+  application:
+    name: microservice-gateway-zuul
+zuul:
+  ##这样会将所有的接口都暴露出来。虽然方便性较高但安全性低。
+  ##而zuul.ignoredServices=*表示我们忽略所有默认匹配的path。只能路由到我们手动配置的路径。
+  ignored-services:  microservice-consumer-movie-ribbon-with-hystrix
+  ## 用zuul反向代理 application-name为microservice-provider-user的微服务，
+  ## 使其路径为 /user-path/**
+  routes:
+    ## users 随便定义,必须是唯一的
+    users:
+      path: /user-url/**
+      url: http://10.113.4.19:7901/
+
+
+
+
+
+

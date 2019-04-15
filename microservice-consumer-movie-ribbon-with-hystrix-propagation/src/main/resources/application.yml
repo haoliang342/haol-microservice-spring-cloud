@@ -1,0 +1,18 @@
+server:
+  port: 8078
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    service-url:
+      defaultZone : http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+spring:
+  application:
+    name: microservice-consumer-movie-ribbon-with-hystrix-propagation
+##后续轮询度量之间的间隔
+hystrix:
+  metrics:
+    polling-interval-ms: 2000
+
